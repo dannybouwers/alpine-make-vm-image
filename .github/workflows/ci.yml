@@ -2,7 +2,7 @@ name: CI
 on:  
   push:
     tags:
-      - 'v*'
+      - 'Alpine*'
 
 jobs:
   oraclecloud:
@@ -31,5 +31,5 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "alpine-oraclecloud-$(date +%Y-%m-%d).tar.gz"
+          artifacts: "alpine-oraclecloud-*.tar.gz"
           token: ${{ secrets.GITHUB_TOKEN }}
