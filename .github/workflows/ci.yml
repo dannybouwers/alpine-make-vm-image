@@ -16,13 +16,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: >
-          sudo ./alpine-make-vm-image 
-              --image-format qcow2 
-              --image-size 8G 
-              --repositories-file oracle/repositories 
-              --packages "$(cat oracle/packages)" 
-              --script-chroot 
+        run: |
+          sudo ./alpine-make-vm-image \
+              --image-format qcow2 \
+              --image-size 8G \
+              --repositories-file oracle/repositories \
+              --packages "$(cat oracle/packages)" \
+              --script-chroot \
               alpine-oraclecloud-$(date +%Y-%m-%d).qcow2 -- ./oracle/configure.sh
 
       - name: Compress image
